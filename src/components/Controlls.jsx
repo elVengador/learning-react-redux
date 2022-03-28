@@ -18,9 +18,10 @@ export const Controls = () => {
         <div className="controls" >
             <button onClick={onDoubleDecrement}>--</button>
             <button onClick={onDecrement}>-</button>
-            <button onClick={onReset}>Reset</button>
             <button onClick={onIncrement}>+</button>
             <button onClick={onDoubleIncrement}>++</button>
+            <br />
+            <button onClick={onReset}>Reset</button>
             <button onClick={onRandom}>Random</button>
         </div>
     )

@@ -1,8 +1,4 @@
-// import { useState } from 'react'
-// import { useSelector } from 'react-redux'
-
 import { useSelector } from 'react-redux'
-import './App.css'
 
 function App() {
 
@@ -10,7 +6,7 @@ function App() {
 
   return (
     <div className="wrapper">
-      <h2>{age}</h2>
+      <h2>Some Age: {age}</h2>
     </div>
   )
 }
