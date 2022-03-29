@@ -1,33 +1,29 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchChuckNorrisJoke, jokesReset } from '../redux/jokes/jokes.actions'
+
+import './RandomJoke.css'
 
 
 export const RandomJoke = () => {
 
-    const [jokes, setJokes] = useState([])
+    const { data: jokes, isLoading } = useSelector(state => state.jokes)
     const dispatch = useDispatch()
 
-    // create a thunk action creator to be dispatched
-    const fetchChuckNorrisJoke = () => async dispatch => {
-        const res = await fetch('https://api.chucknorris.io/jokes/random')
-        const data = await res.json()
-        console.log('response', data);
-        // jokes.push(data.value)
-        setJokes([...jokes, data.value])
-    }
-
-    const onGetJoke = () => {
-        dispatch(fetchChuckNorrisJoke())
-        console.log('finish load');
-    }
+    const onGetJoke = () => dispatch(fetchChuckNorrisJoke())
+    const onResetJoke = () => dispatch(jokesReset())
 
     return (
-        <>
-            <div>Chuck Norris Random joke:</div>
-            <button onClick={onGetJoke}>Get one more!</button>
-            <div className="jokes">
-                {jokes.map((cur, idx) => <p key={idx}>{cur}</p>)}
+        <div className='jokes'>
+            <div>Chuck Norris Random joke: {isLoading}</div>
+            {isLoading && <span>Loading...</span>}
+            {!isLoading && <div className='controls'>
+                <button onClick={onGetJoke}>Get one more!</button>
+                <button onClick={onResetJoke}>Reset</button>
+            </div>}
+            <div >
+                {jokes.map((cur, idx) => <p key={idx} className="joke">{cur}</p>)}
             </div>
-        </>
+        </div>
     )
 }

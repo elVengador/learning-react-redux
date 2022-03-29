@@ -1,0 +1,4 @@
+export const JOKES_ADD = '@JOKES/ADD'
+export const JOKES_RESET = '@JOKES/RESET'
+export const JOKES_IS_LOADING = '@JOKES/IS_LOADING'
+export const JOKES_IS_NOT_LOADING = '@JOKES/IS_NOT_LOADING'
