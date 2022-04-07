@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchChuckNorrisJoke, jokesReset } from '../redux/jokes/jokes.actions'
+import { RootState } from '../redux/rootReduce'
 
 import './RandomJoke.css'
 
 
 export const RandomJoke = () => {
 
-    const { data: jokes, isLoading } = useSelector(state => state.jokes)
+    const { data: jokes, isLoading } = useSelector((state: RootState) => state.jokes)
     const dispatch = useDispatch()
 
     const onGetJoke = () => dispatch(fetchChuckNorrisJoke())

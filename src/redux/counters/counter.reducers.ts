@@ -1,7 +1,10 @@
 import { CounterAction } from "./counter.actions"
 import { COUNTER_DECREMENT, COUNTER_DOUBLE_DECREMENT, COUNTER_DOUBLE_INCREMENT, COUNTER_INCREMENT, COUNTER_RANDOM, COUNTER_RESET } from "./counter.types"
 
-export const counterReducer = (status = { age: 10 }, action: CounterAction) => {
+interface CounterStatus { age: number }
+const initialCounter: CounterStatus = { age: 10 }
+
+export const counterReducer = (status = initialCounter, action: CounterAction) => {
     switch (action.type) {
         case COUNTER_INCREMENT:
             return { age: status.age + 1 }

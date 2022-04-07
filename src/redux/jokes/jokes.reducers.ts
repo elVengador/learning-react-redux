@@ -1,9 +1,16 @@
+import { Reducer } from "redux"
 import { JokesAction } from "./jokes.actions"
 import { JOKES_ADD, JOKES_IS_LOADING, JOKES_IS_NOT_LOADING, JOKES_RESET } from "./jokes.types"
 
-export const jokesReducer = (status = { data: [], isLoading: false }, action: JokesAction) => {
+interface JokesStatus { data: string[], isLoading: boolean }
+
+const initialJokes: JokesStatus = { data: [], isLoading: false }
+
+
+export const jokesReducer: Reducer<JokesStatus, JokesAction> = (status = initialJokes, action) => {
     switch (action.type) {
         case JOKES_ADD:
+            if (!action.payload) { return status }
             return { ...status, data: [...status.data, action.payload] }
         case JOKES_RESET:
             return { ...status, data: [] }

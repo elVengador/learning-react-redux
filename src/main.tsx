@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import './index.css'
 import { store } from './redux/store'
 import { Controls } from './components/Controlls'
-import App from './components/App'
+import { Viewer } from './components/Viewer'
 import { RandomJoke } from './components/RandomJoke'
 
 
@@ -16,7 +16,7 @@ ReactDOM.render(
     <Provider store={store}>
       <div className="wrapper">
         <h1>Learning Redux</h1>
-        <App />
+        <Viewer />
         <Controls />
 
         <hr />
