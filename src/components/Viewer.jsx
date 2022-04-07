@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux'
 
-function App() {
+function Viewer() {
 
   const age = useSelector(state => state.counter.age)
 
@@ -11,4 +11,4 @@ function App() {
   )
 }
 
-export default App
+export default Viewer
